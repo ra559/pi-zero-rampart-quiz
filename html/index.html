@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="A small Linux fundamentals quiz hosted on a Raspberry Pi.">
+  <title>Linux Fundamentals Quiz</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.4/css/bulma.min.css">
+  <link rel="stylesheet" href="/app.css">
+  <script src="/app.js" defer></script>
+</head>
+<body>
+  <header class="section pb-2">
+    <div class="container">
+      <p class="eyebrow">RASPBERRY PI ZERO · RAMPART</p>
+      <h1 class="title is-2">Linux Fundamentals Quiz</h1>
+      <p class="subtitle is-6">Eight questions. Your answers are scored by the server.</p>
+    </div>
+  </header>
+
+  <main class="section pt-4">
+    <div class="container quiz-container">
+      <section id="account-panel" class="box" aria-labelledby="account-heading">
+        <h2 id="account-heading" class="title is-5">User account</h2>
+        <p class="mb-4">Create an account or sign in to take the quiz.</p>
+        <div class="columns">
+          <div class="column">
+            <h3 class="title is-6">Create account</h3>
+            <form id="register-form">
+              <div class="field">
+                <label class="label" for="register-username">Username</label>
+                <div class="control"><input class="input" id="register-username" name="username" minlength="3" maxlength="32" autocomplete="username" required></div>
+              </div>
+              <div class="field">
+                <label class="label" for="register-password">Password</label>
+                <div class="control"><input class="input" id="register-password" name="password" type="password" minlength="8" autocomplete="new-password" required></div>
+              </div>
+              <button class="button is-link is-light" type="submit">Create account</button>
+            </form>
+          </div>
+          <div class="column">
+            <h3 class="title is-6">Sign in</h3>
+            <form id="login-form">
+              <div class="field">
+                <label class="label" for="login-username">Username</label>
+                <div class="control"><input class="input" id="login-username" name="username" autocomplete="username" required></div>
+              </div>
+              <div class="field">
+                <label class="label" for="login-password">Password</label>
+                <div class="control"><input class="input" id="login-password" name="password" type="password" autocomplete="current-password" required></div>
+              </div>
+              <button class="button is-link" type="submit">Sign in</button>
+            </form>
+          </div>
+        </div>
+        <p id="account-message" class="help mt-3" role="status" aria-live="polite"></p>
+        <div id="signed-in-panel" class="is-hidden">
+          <p>Signed in as <strong id="signed-in-name"></strong>.</p>
+          <button id="logout-button" class="button is-small is-light mt-2" type="button">Sign out</button>
+        </div>
+      </section>
+
+      <section id="quiz-panel" class="box is-hidden" aria-labelledby="quiz-heading">
+        <div class="level is-mobile">
+          <div class="level-left">
+            <h2 id="quiz-heading" class="title is-5 mb-0">Knowledge check</h2>
+          </div>
+          <div class="level-right">
+            <p id="progress" class="has-text-grey" aria-live="polite">Loading questions…</p>
+          </div>
+        </div>
+
+        <progress id="progress-bar" class="progress is-link" value="0" max="8">0%</progress>
+
+        <form id="quiz-form">
+          <div id="questions" aria-live="polite">
+            <p>Loading quiz questions…</p>
+          </div>
+          <div class="buttons mt-5">
+            <button id="submit-button" class="button is-link" type="submit" disabled>Submit answers</button>
+            <button id="reset-button" class="button is-light" type="button">Restart quiz</button>
+          </div>
+        </form>
+      </section>
+
+      <section id="results" class="box is-hidden" aria-labelledby="results-heading" tabindex="-1">
+        <h2 id="results-heading" class="title is-4">Your results</h2>
+        <p id="score-summary" class="subtitle is-6"></p>
+        <div id="feedback-list"></div>
+        <button id="try-again-button" class="button is-link mt-4" type="button">Try again</button>
+      </section>
+
+      <footer class="content has-text-grey is-small mt-5">
+        <p>Demo app hosted by Rampart on the Raspberry Pi. Bulma CSS is loaded from a CDN.</p>
+      </footer>
+    </div>
+  </main>
+</body>
+</html>

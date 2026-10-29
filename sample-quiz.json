@@ -1,0 +1,28 @@
+{
+  "questions": [
+    {
+      "id": "q1",
+      "question": "Which command prints the current working directory?",
+      "options": [
+        {
+          "value": "A",
+          "label": "pwd"
+        },
+        {
+          "value": "B",
+          "label": "whoami"
+        },
+        {
+          "value": "C",
+          "label": "ls"
+        },
+        {
+          "value": "D",
+          "label": "cd"
+        }
+      ],
+      "answer": "A",
+      "explanation": "pwd prints the path of the current working directory."
+    }
+  ]
+}
